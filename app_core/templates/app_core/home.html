@@ -1,0 +1,31 @@
+{% extends "app_core/base.html" %}
+{% load static %}
+
+<style>
+
+
+
+
+</style>
+<body>
+    {% block content %}
+
+    {% for i in chaps %}
+    <p>{{i.name}}</p>
+    {% endfor %}
+
+
+    <div class="container" style="font-size: 25px;">
+        <p>Stuck with a Question paper? <b>We got you covered.</b></p>
+        <p>Enhanced study guide and tips. <b>Tutorials</b> on all chapters. </p>
+    <p>
+        <img src="{% static 'app_core/media/study_table.jpg' %}" style="width: 50%; margin-left: 300px; margin-top: 150px">
+    </p>
+
+    </div>
+
+
+
+
+    {% endblock content %}
+</body>

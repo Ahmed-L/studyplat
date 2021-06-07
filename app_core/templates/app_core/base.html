@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Study Platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    {% include 'app_core/header.html' %}
+</head>
+<body>
+
+    <!-- Body -->
+    <style type="text/css">
+        .main{
+            min-height: 77vh;
+            height: 100%;
+            }
+    </style>
+    <div class="main">
+    {% block content %}
+
+    {% endblock content %}
+    </div>
+    <!-- EndBody -->
+
+    {% include 'app_core/footer.html' %}
+</body>
+</html>

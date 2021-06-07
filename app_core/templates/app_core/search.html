@@ -1,0 +1,35 @@
+{% extends "app_core/base.html" %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div id="postlist">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="text-center">
+
+                        </div>
+                    </div>
+                <div class="panel-body">
+        {% for s in searched_name_list %}
+
+
+        <a href="{% url "chapter" name=s.name %}">Chapter: {{s.chapter_num}} - {{s.name}}</a>
+        <hr>
+
+        {% endfor %}
+        </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
