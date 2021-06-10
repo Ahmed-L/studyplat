@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    {% extends 'app_core/base.html' %}
+
+    <title>Quiz</title>
+</head>
+<body>
+    {% block content %}
+    <script>var list = [];</script>
+    <h2 style="text-align: center">{{chapter}}</h2>
+    <div class="container" style="justify-content: center; display: flex">
+        <form>
+    {% for mcq in mcq_list %}
+        <p style="margin-top: 35px"><b>{{mcq.question}}</b></p>
+
+
+            {% for answer in mcq.answers %}
+            <input type="radio" id="{{answer.answer_text}}" name="{{mcq.question}}"
+                   value="{{answer.is_correct}}" onclick="checkMCQ(this.value,this.name)">
+            <label for="{{answer.answer_text}}" id="{{answer.answer_text}}_for_color">{{answer.answer_text}}&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            {% if answer.is_correct == True %}
+            <script type="text/javascript">var a = "{{answer.answer_text}}";list.push(a);</script>
+            {% endif %}
+            {% endfor %}
+
+    <br><br>
+    {% endfor %}
+            <button type="button" onclick="showCorrect()">Submit</button>
+            </form>
+
+
+
+
+        </div>
+        <div class="container" style="justify-content: center; display: flex;">
+            <div class="child" id="div_d" style="display :none; margin-top: 100px;">
+            <p>Submitted. You scored <b id="corr">0</b> right out of {{total}}.</p>
+            </div>
+        </div>
+
+
+        <script>
+        //var list = [];
+        var dict = {};
+
+    function checkMCQ(val,name){
+        if(val == 'True')
+        {
+            dict[name] = 1;
+        }
+        else
+        {
+            dict[name] = 0;
+        }
+        //alert(dict[name]);
+    }
+
+    function showCorrect(){
+        var correct = 0;
+        for(var key in dict)
+        {
+            if(dict[key]==1)
+            {
+                correct = correct + 1;
+            }
+            else
+            {
+                //var z = key.toString() + "_for_color";
+                //document.getElementById(z).style.color = "red";
+            }
+        }
+        //alert(correct);
+        document.getElementById("corr").innerHTML = correct;
+        document.getElementById("div_d").style.display = "block";
+        //correct = 0;
+        colorCorrect();
+     }
+
+     function colorCorrect(){
+        for(var l in list){
+            //window.alert(l);
+            var z = list[l]+"_for_color";
+            document.getElementById(z).style.color = "#32CD32";
+        }
+
+     }
+    </script>
+
+    {% endblock content %}
+
+</body>
+</html>
