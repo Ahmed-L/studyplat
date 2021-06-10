@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
 from app_core.views import subject, chapter, home, search
+from quiz.views import quiz_view
 
 urlpatterns = [
     path('', home, name='app_core/home.html'),
@@ -25,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('subject/<str:name>', subject, name='subject'),
     path('chapter/<str:name>', chapter, name='chapter'),
-    path('search', search, name='search')
+    path('search', search, name='search'),
+    path('quiz/<str:name>', quiz_view, name='quiz')
     # path('subject', subject, name='subject'),
     # path('chapter', chapter, name='chapter')
 ]
